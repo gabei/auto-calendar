@@ -1,15 +1,5 @@
 import puppeteer from "puppeteer";
 
-const calendar: {url: string}  = {
-    url: "https://laketravislibrary.org/meeting-room/"
-}
-
-type calendar_event = {
-    date: Number,
-    title: string,
-    time: string
-}
-
 /* CLIENT will provide the upcoming week from which
     to get a calendar date
     - calendar classes are listed as:
@@ -17,19 +7,26 @@ type calendar_event = {
     - prefix: "tribes-events-calendar-day"
     - suffix: "YYYY-MM-DD"
 */
-const date_prefix: string = "tribe-events-calendar-day-";
-const date_string_length: number = 10;
-
-function get_date_string(
-    date_prefix: string,
-    date_object: Date, 
-    string_length: number): 
-    string {
-        return (
-            date_prefix + 
-            date_object.toISOString().slice(0, string_length)
-        )
+type date_info = {
+    length: number,
+    prefix: string,
+    date: Date,
+    class_name: string
 }
+
+const date: date_info = {
+    length: 10,
+    prefix: "tribe-events-calendar-day-",
+    date: new Date() // will be received from client
+}
+
+function get_date_string(date: date_info): string  {
+    return (
+        date.prefix + date.date.toISOString().slice(0, date.length)
+    )
+    
+}
+
 /* REQUIREMENTS
     - navigate to meeting room calendar page
     - find the upcoming week via class name or text content
@@ -39,6 +36,19 @@ function get_date_string(
         to hold the date, title, and time
     - return the array to the server for response to client
 */
+
+const calendar: {url: string, date_class: string}  = {
+    url: "https://laketravislibrary.org/meeting-room/",
+    date_class: get_date_string(date)
+}
+
+type calendar_event = {
+    date: Number,
+    title: string,
+    time: string
+}
+
+console.log(calendar.date_class);
 
 // async function main() {
 //     const browser = await puppeteer.launch();
