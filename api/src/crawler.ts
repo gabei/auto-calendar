@@ -36,9 +36,9 @@ function get_date_string(date: date_info): string  {
     - return the array to the server for response to client
 */
 
-const calendar: {url: string, date_class: string}  = {
+const calendar: {url: string, date_id: string}  = {
     url: "https://laketravislibrary.org/meeting-room/",
-    date_class: get_date_string(date)
+    date_id: get_date_string(date)
 }
 
 type calendar_event = {
@@ -47,18 +47,19 @@ type calendar_event = {
     time: string
 }
 
-console.log(calendar.date_class);
+
 
 async function main() {
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto(calendar.url);
-
-    console.log(await page.title());
+    console.log("Accessing " + await page.title() + "...");
+    console.log("Accessing ID " + calendar.date_id + "...");
+    
 
     const day_container = 
-        page.waitForSelector(calendar.date_class);
+        page.waitForSelector(calendar.date_id);
         console.log(await day_container);
     
     await browser.close();
