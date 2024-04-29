@@ -1,4 +1,4 @@
-import puppeteer from "puppeteer";
+import puppeteer, { ElementHandle, NodeFor } from "puppeteer";
 
 /* CLIENT will provide the upcoming week from which
     to get a calendar date
@@ -15,7 +15,7 @@ type date_info = {
 
 const date: date_info = {
     length: 10,
-    prefix: "tribe-events-calendar-day-",
+    prefix: "#tribe-events-calendar-day-",
     date: new Date() // will be received from client
 }
 
@@ -49,10 +49,23 @@ type calendar_event = {
 
 console.log(calendar.date_class);
 
-// async function main() {
-//     const browser = await puppeteer.launch();
-//     const page = await browser.newPage();
-//     await page.goto(calendar.url);
+async function main() {
 
-//     await browser.close();
-// }
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    await page.goto(calendar.url);
+
+    console.log(await page.title());
+
+    const day_container = 
+        page.waitForSelector(calendar.date_class);
+        console.log(await day_container);
+    
+    await browser.close();
+}
+
+main();
+
+function parse_event_data(event_data: HTMLElement): string {
+    return "done";
+}
