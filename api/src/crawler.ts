@@ -10,8 +10,7 @@ import puppeteer from "puppeteer";
 type date_info = {
     length: number,
     prefix: string,
-    date: Date,
-    class_name: string
+    date: Date
 }
 
 const date: date_info = {
