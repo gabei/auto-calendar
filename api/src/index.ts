@@ -6,9 +6,8 @@ dotenv.config();
 const app: Express = express();
 const port: number = 3000;
 
-
 app.get("/", (req: Request, res: Response) => {
-    res.send("The typescript server is running.");
+    res.send(`The typescript server is running on port ${port}.`);
 })
 
 app.listen(port, () => {
