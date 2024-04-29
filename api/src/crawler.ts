@@ -10,6 +10,11 @@ type calendar_event = {
     time: string
 }
 
+/* CLIENT will provide the upcomingweek to get a calendar date from
+___________________________________________________________________*/
+const week_date: Date = new Date();
+console.log(week_date);
+
 /* REQUIREMENTS
     - navigate to meeting room calendar page
     - find the upcoming week via class name or text content
@@ -20,10 +25,10 @@ type calendar_event = {
     - return the array to the server for response to client
 */
 
-async function main() {
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-    await page.goto(calendar.url);
+// async function main() {
+//     const browser = await puppeteer.launch();
+//     const page = await browser.newPage();
+//     await page.goto(calendar.url);
 
-    await browser.close();
-}
+//     await browser.close();
+// }
