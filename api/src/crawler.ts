@@ -45,13 +45,8 @@ function get_date_string(date: date_info): string  {
     - date: .tribe-events-calendar-month__day-date-link
 
     - MOST EFFICIENT PATH TO DATA EXTRACTION
-    - get the beginning weekday from the user-provided date object
-    - evaluate the parent node:
-        .tribe-events-calendar-month__week
-    - parent node may require .closest() for selector
-        - in common js:
-        childNode.closest('.tribe-events-calendar-month__week')
-    - iterate over the above containers to gather data
+    - start with day selector (Monday's date) sent by user
+    = iterate over days to create new selectors and extract data
 */
 
 const calendar: {url: string, date_id: string}  = {
@@ -76,10 +71,19 @@ async function main() {
     console.log("Accessing ID " + calendar.date_id + "...");
     
 
-    const day_container = 
-        page.waitForSelector(calendar.date_id);
-        const target = await page.$(calendar.date_id);
-        console.log(await target);
+    // const day_container = 
+    //     page.waitForSelector(calendar.date_id);
+    // const target = await page.$(calendar.date_id);
+    // console.log(await target);
+
+    // try evaluating the page for regular JS usage
+
+    const week_data = await page.evaluate(() => {
+        const target = document.querySelector("#tribe-events-calendar-day-2024-04-29");
+
+        return target?.innerHTML;
+    });
+    console.log(await week_data);
     
     await browser.close();
 }
