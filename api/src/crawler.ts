@@ -54,12 +54,20 @@ const calendar: {url: string, date_id: string}  = {
     date_id: get_date_string(date)
 }
 
-type calendar_event = {
+type calendar_day = {
     date: Number,
+    events: event[]
+}
+
+type event = {
     title: string,
     time: string
 }
 
+const monday: calendar_day = {
+    date: 30,
+    events: []
+}
 
 
 async function main() {
@@ -69,21 +77,19 @@ async function main() {
     await page.goto(calendar.url);
     console.log("Accessing " + await page.title() + "...");
     console.log("Accessing ID " + calendar.date_id + "...");
-    
 
-    // const day_container = 
-    //     page.waitForSelector(calendar.date_id);
-    // const target = await page.$(calendar.date_id);
-    // console.log(await target);
-
-    // try evaluating the page for regular JS usage
-
-    const week_data = await page.evaluate(() => {
+    const day_data = await page.evaluate(() => {
         const target = document.querySelector("#tribe-events-calendar-day-2024-04-29");
 
-        return target?.innerHTML;
+        const titles = target?.querySelectorAll(".tribe-events-calendar-month__calendar-event-title-link");
+
+        const text = Array.prototype.map.call(titles, (title)=> {
+            return title.innerHTML.trim();
+        })
+
+        return text;
     });
-    console.log(await week_data);
+    console.log(await day_data);
     
     await browser.close();
 }
