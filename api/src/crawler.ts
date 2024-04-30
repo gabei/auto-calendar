@@ -70,26 +70,33 @@ const monday: calendar_day = {
 }
 
 
-async function main() {
 
+async function main() {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto(calendar.url);
-    console.log("Accessing " + await page.title() + "...");
-    console.log("Accessing ID " + calendar.date_id + "...");
 
     const day_data = await page.evaluate(() => {
-        const target = document.querySelector("#tribe-events-calendar-day-2024-04-29");
-
+        const target = document.querySelector("#tribe-events-calendar-day-2024-04-30");
         const titles = target?.querySelectorAll(".tribe-events-calendar-month__calendar-event-title-link");
 
-        const text = Array.prototype.map.call(titles, (title)=> {
+        const title_text = Array.prototype.map.call(titles, (title)=> {
             return title.innerHTML.trim();
         })
 
-        return text;
+        const times = target?.querySelectorAll(".tribe-events-calendar-month__calendar-event-datetime time");
+
+        const filtered_times = Array.prototype.filter.call(times, (time) => {
+            return time.classList.length === 0;
+        })
+        const time_text = Array.prototype.map.call(filtered_times, (time) => {
+            return time.innerHTML.trim();
+        })
+
+        return {title_text, time_text}
     });
-    console.log(await day_data);
+    console.log(await day_data.title_text);
+    console.log(await day_data.time_text);
     
     await browser.close();
 }
