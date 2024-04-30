@@ -78,7 +78,8 @@ async function main() {
 
     const day_container = 
         page.waitForSelector(calendar.date_id);
-        console.log(await day_container);
+        const target = await page.$(calendar.date_id);
+        console.log(await target);
     
     await browser.close();
 }
