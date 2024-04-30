@@ -64,13 +64,6 @@ type event = {
     time: string
 }
 
-const monday: calendar_day = {
-    date: 30,
-    events: []
-}
-
-
-
 async function main() {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
