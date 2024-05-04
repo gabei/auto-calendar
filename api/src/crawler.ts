@@ -1,33 +1,3 @@
-import puppeteer, { ElementHandle, NodeFor } from "puppeteer";
-
-/* CLIENT will provide the upcoming week from which
-    to get a calendar date
-    - calendar classes are listed as:
-    - "tribe-events-calendar-day-YYYY-MM-DD"
-    - prefix: "tribes-events-calendar-day"
-    - suffix: "YYYY-MM-DD"
-*/
-type date_info = {
-    length: number,
-    prefix: string,
-    date: Date
-}
-
-const date: date_info = {
-    length: 10,
-    prefix: "#tribe-events-calendar-day-",
-    date: new Date() // will be received from client
-}
-
-
-
-function get_date_string(date: date_info): string  {
-    return (
-        date.prefix + date.date.toISOString().slice(0, date.length)
-    )
-    
-}
-
 /* REQUIREMENTS
     - navigate to meeting room calendar page
     - find the upcoming week via class name or text content
@@ -47,7 +17,36 @@ function get_date_string(date: date_info): string  {
     - MOST EFFICIENT PATH TO DATA EXTRACTION
     - start with day selector (Monday's date) sent by user
     = iterate over days to create new selectors and extract data
+
+    CLIENT will provide the upcoming week from which
+    to get a calendar date
+    - calendar classes are listed as:
+    - "tribe-events-calendar-day-YYYY-MM-DD"
+    - prefix: "tribes-events-calendar-day"
+    - suffix: "YYYY-MM-DD"
 */
+import puppeteer, { ElementHandle, NodeFor } from "puppeteer";
+
+type date_info = {
+    length: number,
+    prefix: string,
+    date: Date
+}
+
+const date: date_info = {
+    length: 10,
+    prefix: "#tribe-events-calendar-day-",
+    date: new Date() // will be received from client
+}
+
+function get_date_string(date: date_info): string  {
+    return (
+        date.prefix + date.date.toISOString().slice(0, date.length)
+    )
+    
+}
+
+
 
 const calendar: {url: string, date_id: string}  = {
     url: "https://laketravislibrary.org/meeting-room/",
@@ -69,7 +68,6 @@ async function main() {
     const page = await browser.newPage();
     await page.goto(calendar.url);
 
-    //l et myArrays: { [key: string]: string[] } = {};
     // extract data from dom into day_data
     const day_data = await page.evaluate(() => {
         const target = document.querySelector("#tribe-events-calendar-day-2024-04-30");
@@ -90,9 +88,6 @@ async function main() {
 
         return {title_text, time_text}
     });
-    console.log(await day_data.title_text);
-    console.log(await day_data.time_text);
-
 
     const response = new Array();
     day_data.title_text.forEach((title) => {
@@ -104,7 +99,7 @@ async function main() {
     })
     
     console.log(response);
-    
+
     await browser.close();
 }
 
