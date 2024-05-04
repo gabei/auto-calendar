@@ -46,8 +46,6 @@ function get_date_string(date: date_info): string  {
     
 }
 
-
-
 const calendar: {url: string, date_id: string}  = {
     url: "https://laketravislibrary.org/meeting-room/",
     date_id: get_date_string(date)
