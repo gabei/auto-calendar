@@ -69,6 +69,8 @@ async function main() {
     const page = await browser.newPage();
     await page.goto(calendar.url);
 
+    //l et myArrays: { [key: string]: string[] } = {};
+    // extract data from dom into day_data
     const day_data = await page.evaluate(() => {
         const target = document.querySelector("#tribe-events-calendar-day-2024-04-30");
         const titles = target?.querySelectorAll(".tribe-events-calendar-month__calendar-event-title-link");
@@ -90,6 +92,18 @@ async function main() {
     });
     console.log(await day_data.title_text);
     console.log(await day_data.time_text);
+
+
+    const response = new Array();
+    day_data.title_text.forEach((title) => {
+        let start = day_data.time_text.shift();
+        let end = day_data.time_text.shift();
+        let full_time = `${start} - ${end}`;
+        let event_title: string  = title as string;
+        response.push({ [event_title]: full_time })
+    })
+    
+    console.log(response);
     
     await browser.close();
 }
