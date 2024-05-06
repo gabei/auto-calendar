@@ -74,14 +74,17 @@ type event = {
     time: string
 }
 
-async function main() {
+async function get_calendar_date(date: date_info) {
+
+    let className = get_date_string(date);
+
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto(calendar.url);
 
     // extract data from dom into day_data
     const day_data = await page.evaluate(() => {
-        const target = document.querySelector("#tribe-events-calendar-day-2024-04-30");
+        const target = document.querySelector(className);
         const titles = target?.querySelectorAll(".tribe-events-calendar-month__calendar-event-title-link");
 
         const title_text = Array.prototype.map.call(titles, (title)=> {
@@ -114,7 +117,7 @@ async function main() {
     await browser.close();
 }
 
-main();
+get_calendar_date(starting_date);
 
 function parse_event_data(event_data: HTMLElement): string {
     return "done";
