@@ -25,7 +25,7 @@
     - prefix: "tribes-events-calendar-day"
     - suffix: "YYYY-MM-DD"
 */
-import puppeteer, { ElementHandle, NodeFor } from "puppeteer";
+import puppeteer from "puppeteer";
 
 type date_info = {
     length: number,
@@ -33,22 +33,35 @@ type date_info = {
     date: Date
 }
 
-const date: date_info = {
-    length: 10,
+const starting_date: date_info = {
+    length: 10, // the only part of the string necessary for the classname lookup
     prefix: "#tribe-events-calendar-day-",
     date: new Date() // will be received from client
 }
+
+console.log(starting_date.date.toISOString());
+console.log(starting_date.date.setDate(starting_date.date.getDate() + 1));
+console.log(starting_date.date.toUTCString());
+
+// const response_array []
+// for i = 0 i < 7 i ++
+// response_array.push(get_event_data(starting_date))    
+// starting_date.date.setDate(starting_date.date.getDate() + i)
+//  
+
+// get event data()
+// let className = get_date_string(date)
+// return await page evaluate
 
 function get_date_string(date: date_info): string  {
     return (
         date.prefix + date.date.toISOString().slice(0, date.length)
     )
-    
 }
 
 const calendar: {url: string, date_id: string}  = {
     url: "https://laketravislibrary.org/meeting-room/",
-    date_id: get_date_string(date)
+    date_id: get_date_string(starting_date)
 }
 
 type calendar_day = {
