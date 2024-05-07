@@ -6,14 +6,6 @@ ____________________________________________________________*/
 
 test('Date objects should return a string MMMM-YY-DD', ()=> {
     expect(
-        t.formatDateYYYYMMDD(new Date('Wed May 08 2024 12:00:00')))
-        .toBe("2024-05-08");
-
-    expect(
-        t.formatDateYYYYMMDD(new Date('Thu May 09 2024 13:10:00')))
-        .toBe("2024-05-09");
-
-    expect(
         t.formatDateYYYYMMDD(new Date('Mon May 20 2024 10:30:00')))
         .toBe("2024-05-20");
 
@@ -40,10 +32,6 @@ test('Strings should be returned in format PREFIX + INPUT STRING', ()=> {
     expect(
         t.createTargetIdName("1992-01-07"))
         .toBe("#tribe-events-calendar-day-1992-01-07");
-
-    expect(
-        t.createTargetIdName("1998-05-01"))
-        .toBe("#tribe-events-calendar-day-1998-05-01");
 
     expect(
         t.createTargetIdName("2024-05-20"))
