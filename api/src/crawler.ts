@@ -2,7 +2,8 @@ import axios from "axios";
 import * as cheerio from "cheerio";
 
 const targetURL = "https://laketravislibrary.org/meeting-room/";
-const today = formatDateYYYYMMDD(new Date());
+const today = new Date();
+const todayString = formatDateYYYYMMDD(today);
 console.log(today);
 
 

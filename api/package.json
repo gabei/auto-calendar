@@ -2,7 +2,7 @@
   "scripts": {
     "server": "node dist/index.js",
     "crawler": "node dist/crawler.js",
-    "test": "jest"
+    "test": "jest ./src"
   },
   "dependencies": {
     "axios": "^1.6.8",
