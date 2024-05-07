@@ -25,13 +25,24 @@ function createTargetIdName(dateString: string){
     return classPrefix + dateString;
 }
 
+function getCurrentWeek(idName: string): string {
+    const weekSelector = ".tribe-events-calendar-month__week";
+    return '';
+}
+
 
 async function main (){
     const response = await axios.get(targetURL);
     const $ = cheerio.load(response.data);
 
     const weekSelector = ".tribe-events-calendar-month__week";
+    const selectedDay = createTargetIdName(formatDateYYYYMMDD(new Date()));;
+    console.log($(selectedDay).closest(weekSelector));
 }
+
+main();
+
+
 
 
 // EXPORT FUNCTIONS FOR TESTING
