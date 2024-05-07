@@ -18,6 +18,12 @@ async function main (){
     const $ = cheerio.load(response.data);
 
     const weekSelector = ".tribe-events-calendar-month__week";
+}
 
 
+/*
+DEXPORT FUNCTIONS FOR 
+*/
+export const testExports = {
+    formatDateYYYYMMDD
 }
