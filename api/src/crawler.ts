@@ -51,7 +51,7 @@ async function main (){
 
         $(currentDay)
         .find(".tribe-events-calendar-month__calendar-event-title-link")
-        .each((index, element) => {
+        .each((_, element) => {
             let newEvent = <Event>{};
             newEvent.title = $(element).text().trim();
             newEvent.time = 'time AM - time PM';
