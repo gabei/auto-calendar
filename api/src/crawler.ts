@@ -28,19 +28,14 @@ async function main (){
     const response = await axios.get(targetURL);
     const $ = cheerio.load(response.data);
 
-    const selectedDay = createTargetIdName(formatDateYYYYMMDD(new Date()));;
-    const day = $(selectedDay);
-
     let i: number = 0;
-
-    //console.log(today.setDate(today.getDate() + 1));
-    //console.log(today.toUTCString());
-
+    let weekLength = 6;
     do {
         today.setDate(today.getDate() + i);
-        console.log(today.toUTCString());
+        const currentDay = createTargetIdName(formatDateYYYYMMDD(today));
+        console.log(currentDay);
         i++;
-    } while(i < 6);
+    } while(i < weekLength);
 
     //console.log("day:\n" + day);
 
