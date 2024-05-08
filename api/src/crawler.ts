@@ -35,10 +35,9 @@ async function main (){
     const response = await axios.get(targetURL);
     const $ = cheerio.load(response.data);
 
-    const weekSelector = ".tribe-events-calendar-month__week";
     const selectedDay = createTargetIdName(formatDateYYYYMMDD(new Date()));;
     const day = $(selectedDay);
-    console.log("day:\n" + week2)
+    console.log("day:\n" + day);
 
     //console.log("week 1:\n" + week);
 }
