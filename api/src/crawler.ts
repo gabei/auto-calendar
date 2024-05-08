@@ -37,16 +37,10 @@ async function main (){
 
     const weekSelector = ".tribe-events-calendar-month__week";
     const selectedDay = createTargetIdName(formatDateYYYYMMDD(new Date()));;
-    const week = $(selectedDay).closest(weekSelector);
-    //console.log(week);
-    // here let's use a wildcard CSS selector to get all IDs that match a specific day of the week
-    // example in vanilla JS: document.queryselectorAll("div[id^='']")
-    
-    // ALTERNATIVELY
-    // select WEEKSELECTOR that has SELECTED DAY
-    // then continue with above
-    console.log("Target element: ")
-    const week2 = $(`${weekSelector}`).has(selectedDay);
+    const day = $(selectedDay);
+    console.log("day:\n" + week2)
+
+    //console.log("week 1:\n" + week);
 }
 
 main();
