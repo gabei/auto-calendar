@@ -4,7 +4,6 @@ import * as cheerio from "cheerio";
 
 const targetURL = "https://laketravislibrary.org/meeting-room/";
 const today = new Date();
-const todayString = formatDateYYYYMMDD(today);
 
 
 function formatDateYYYYMMDD(date: Date): string {
@@ -25,21 +24,26 @@ function createTargetIdName(dateString: string){
     return classPrefix + dateString;
 }
 
-function getCurrentWeek(idName: string): string {
-    const weekSelector = ".tribe-events-calendar-month__week";
-    return '';
-}
-
-
 async function main (){
     const response = await axios.get(targetURL);
     const $ = cheerio.load(response.data);
 
     const selectedDay = createTargetIdName(formatDateYYYYMMDD(new Date()));;
     const day = $(selectedDay);
-    console.log("day:\n" + day);
 
-    //console.log("week 1:\n" + week);
+    let i: number = 0;
+
+    //console.log(today.setDate(today.getDate() + 1));
+    //console.log(today.toUTCString());
+
+    do {
+        today.setDate(today.getDate() + i);
+        console.log(today.toUTCString());
+        i++;
+    } while(i < 6);
+
+    //console.log("day:\n" + day);
+
 }
 
 main();
