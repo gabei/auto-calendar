@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "server": "node dist/index.js",
-    "crawler": "node dist/crawler.js",
+    "serve": "node dist/index.js",
+    "crawl": "node dist/crawler.js",
     "test": "jest ./src"
   },
   "dependencies": {

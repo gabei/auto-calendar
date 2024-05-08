@@ -3,7 +3,7 @@ import * as cheerio from "cheerio";
 
 
 const targetURL = "https://laketravislibrary.org/meeting-room/";
-const today = new Date();
+
 
 
 function formatDateYYYYMMDD(date: Date): string {
@@ -30,7 +30,7 @@ async function main (){
 
 
     type CalendarDate = {
-        date: string,
+        date: number,
         events: Event[]
     }
 
@@ -39,18 +39,30 @@ async function main (){
         time: string
     }
 
+    const startingDate = new Date();
     let i: number = 0;
     let weekLength = 6;
     do {
         const day = <CalendarDate>{};
+        const today = new Date(startingDate);
         
-        today.setDate(today.getDate() + i);
+        today.setDate(startingDate.getDate() + i);
         const currentDay = createTargetIdName(formatDateYYYYMMDD(today));
-        const events = $(currentDay).find(".tribe-events-calendar-month__calendar-event-title-link");
-        day.date = today.toUTCString();
 
+        $(currentDay)
+        .find(".tribe-events-calendar-month__calendar-event-title-link")
+        .each((index, element) => {
+            let newEvent = <Event>{};
+            newEvent.title = $(element).text().trim();
+            newEvent.time = 'time AM - time PM';
+            console.log(newEvent.title);
+            console.log(newEvent.time);
+            //day.events.push(newEvent); // TYPE ERROR
+        });
 
-        console.log($(events).text());
+        day.date = today.getDate();
+        console.log(day.date);
+        console.log(day.events); // UNDEFINED
         i++;
     } while(i < weekLength);
 }
