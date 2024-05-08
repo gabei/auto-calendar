@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import * as cheerio from "cheerio";
 
 
@@ -33,13 +33,12 @@ async function main (){
     do {
         today.setDate(today.getDate() + i);
         const currentDay = createTargetIdName(formatDateYYYYMMDD(today));
-        console.log(currentDay);
+        const events = $(currentDay).find(".tribe-events-calendar-month__calendar-event-title-link");
+        console.log($(events).text());
         i++;
     } while(i < weekLength);
-
-    //console.log("day:\n" + day);
-
 }
+    
 
 main();
 
