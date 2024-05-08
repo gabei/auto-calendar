@@ -28,12 +28,28 @@ async function main (){
     const response = await axios.get(targetURL);
     const $ = cheerio.load(response.data);
 
+
+    type CalendarDate = {
+        date: string,
+        events: Event[]
+    }
+
+    type Event = {
+        title: string,
+        time: string
+    }
+
     let i: number = 0;
     let weekLength = 6;
     do {
+        const day = <CalendarDate>{};
+        
         today.setDate(today.getDate() + i);
         const currentDay = createTargetIdName(formatDateYYYYMMDD(today));
         const events = $(currentDay).find(".tribe-events-calendar-month__calendar-event-title-link");
+        day.date = today.toUTCString();
+
+
         console.log($(events).text());
         i++;
     } while(i < weekLength);
