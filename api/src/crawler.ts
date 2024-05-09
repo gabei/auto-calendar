@@ -21,6 +21,7 @@ async function main (){
     const startingDate = new Date();
     let i: number = 0;
     let weekLength = 6;
+    
     do {
         let today = new Date(startingDate);
         today.setDate(startingDate.getDate() + i);
