@@ -43,26 +43,25 @@ async function main (){
     let i: number = 0;
     let weekLength = 6;
     do {
-        const day = <CalendarDate>{};
-        const today = new Date(startingDate);
-        
+        let today = new Date(startingDate);
         today.setDate(startingDate.getDate() + i);
-        const currentDay = createTargetIdName(formatDateYYYYMMDD(today));
 
+        let weekday: CalendarDate = {
+            date: today.getDate(),
+            events: [] as Event[]
+        };
+        
+        const currentDay = createTargetIdName(formatDateYYYYMMDD(today));
         $(currentDay)
         .find(".tribe-events-calendar-month__calendar-event-title-link")
         .each((_, element) => {
             let newEvent = <Event>{};
             newEvent.title = $(element).text().trim();
             newEvent.time = 'time AM - time PM';
-            console.log(newEvent.title);
-            console.log(newEvent.time);
-            //day.events.push(newEvent); // TYPE ERROR
+            weekday.events.push(newEvent); // TYPE ERROR
         });
 
-        day.date = today.getDate();
-        console.log(day.date);
-        console.log(day.events); // UNDEFINED
+        console.log(weekday);
         i++;
     } while(i < weekLength);
 }
