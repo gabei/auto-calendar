@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import * as cheerio from "cheerio";
 
 // extract this into env variable later
@@ -25,6 +25,7 @@ async function populateCalendarWeek (){
     const startingDate = new Date();
     let i: number = 0;
     let weekLength = 6;
+
 
     do {
         let today = new Date(startingDate);
@@ -54,11 +55,13 @@ async function populateCalendarWeek (){
     return calendarWeek;
 }
 
+
 function formatDateYYYYMMDD(date: Date): string {
     // Inputs: a raw date object
     // Outputs: A string of the date in format YYYY-MM-DD
     return date.toISOString().split('T')[0];
 }
+
 
 function createTargetIdName(dateString: string){
     if(!dateString){
