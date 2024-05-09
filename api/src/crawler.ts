@@ -14,14 +14,18 @@ type Event = {
     time: string
 }
 
-async function main (){
+
+
+async function populateCalendarWeek (){
     const response = await axios.get(targetURL);
     const $ = cheerio.load(response.data);
 
+
+    const calendarWeek: CalendarDate[] = []; 
     const startingDate = new Date();
     let i: number = 0;
     let weekLength = 6;
-    
+
     do {
         let today = new Date(startingDate);
         today.setDate(startingDate.getDate() + i);
@@ -35,18 +39,20 @@ async function main (){
         $(currentDay)
         .find(".tribe-events-calendar-month__calendar-event-title-link")
         .each((_, element) => {
+            //console.log(element);
             let newEvent = <Event>{};
             newEvent.title = $(element).text().trim();
             newEvent.time = 'time AM - time PM';
             weekday.events.push(newEvent); // TYPE ERROR
         });
 
-        console.log(weekday);
+        //console.log(weekday);
+        calendarWeek.push(weekday);
         i++;
     } while(i < weekLength);
-}
 
-main();
+    return calendarWeek;
+}
 
 function formatDateYYYYMMDD(date: Date): string {
     // Inputs: a raw date object
@@ -65,6 +71,12 @@ function createTargetIdName(dateString: string){
     const classPrefix:string = "#tribe-events-calendar-day-";
     return classPrefix + dateString;
 }
+
+
+// anonymous function for testing purposes
+(async () => {
+    console.log(await populateCalendarWeek());
+})();
 
 // EXPORT FUNCTIONS FOR TESTING
 export const testExports = {
