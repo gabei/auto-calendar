@@ -48,8 +48,7 @@ async function populateCalendarWeek (){
             .toArray().map((e) => $(e).text().trim());
 
         for(let i = 0; i < titles.length; i++){
-            let eventTime: string = times.slice(0, 2).join(" - ");
-            times = times.slice(2);
+            let eventTime: string = times.splice(0, 2).join(" - ");
             weekday.events.push({
                 title: titles.shift() as string,
                 time: eventTime
