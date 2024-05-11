@@ -31,7 +31,7 @@ async function populateCalendarWeek (){
     for(let i = 0; i < weekLength; i++) {
         today.setDate(startingDate.getDate() + i);
 
-        console.log("NEW DAY");
+        
         let weekday: CalendarDate = {
             date: today.getDate(),
             events: [] as Event[]
@@ -54,10 +54,10 @@ async function populateCalendarWeek (){
                 time: eventTime
             })
         }
-        console.log(weekday);
+        
         calendarWeek.push(weekday);  
     }
-
+    console.log(calendarWeek);
     return calendarWeek;
 }
 
@@ -80,12 +80,7 @@ function createTargetIdName(dateString: string){
     const classPrefix:string = "#tribe-events-calendar-day-";
     return classPrefix + dateString;
 }
-
-
-// anonymous function for testing purposes
-(async () => {
-    console.log(await populateCalendarWeek());
-})();
+populateCalendarWeek();
 
 // EXPORT FUNCTIONS FOR TESTING
 export const testExports = {

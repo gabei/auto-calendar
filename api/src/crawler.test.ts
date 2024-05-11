@@ -48,3 +48,14 @@ test ('Strings should be the appropriate length', () => {
     }).toThrow("String length must equal that of the format YYYY-MM-DD (10)")
 
 })
+
+/* populateCalendarWeek()
+____________________________________________________________*/
+test('Function should return array with nested object structure.', async () => {
+    const returnedArray = await t.populateCalendarWeek();
+
+    returnedArray.forEach((item) => {
+        expect(item).toHaveProperty("date", expect.any(Number));
+        expect(item).toHaveProperty("events", expect.any(Array));
+    })
+})
