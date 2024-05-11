@@ -33,15 +33,15 @@ async function populateCalendarWeek (){
             date: today.getDate(),
             events: [] as Event[]
         };
+
+        let newEvent = <Event>{};
         
         const currentDay = createTargetIdName(formatDateYYYYMMDD(today));
         $(currentDay)
         .find(".tribe-events-calendar-month__calendar-event-title-link")
         .each((_, element) => {
-            weekday.events.push({
-                    title: $(element).text().trim(),
-                    time: 'time AM - time PM'
-                })
+            newEvent.title = $(element).text().trim();
+            newEvent.time = 'placeholder time';
         });
         calendarWeek.push(weekday);  
     }
