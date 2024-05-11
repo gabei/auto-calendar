@@ -2,7 +2,9 @@ import axios from "axios";
 import * as cheerio from "cheerio";
 
 // extract this into env variable later
-const targetURL = "https://laketravislibrary.org/meeting-room/";
+const TARGETURL: string = "https://laketravislibrary.org/meeting-room/";
+const TITLECLASS: string = ".tribe-events-calendar-month__calendar-event-title-link";
+const TIMECLASS: string = ".tribe-events-calendar-month__calendar-event-datetime time";
 
 type CalendarDate = {
     date: number,
@@ -16,7 +18,7 @@ type Event = {
 
 
 async function populateCalendarWeek (){
-    const response = await axios.get(targetURL);
+    const response = await axios.get(TARGETURL);
     const $ = cheerio.load(response.data);
 
     const calendarWeek: CalendarDate[] = []; 
@@ -29,20 +31,31 @@ async function populateCalendarWeek (){
     for(let i = 0; i < weekLength; i++) {
         today.setDate(startingDate.getDate() + i);
 
+        console.log("NEW DAY");
         let weekday: CalendarDate = {
             date: today.getDate(),
             events: [] as Event[]
         };
-
-        let newEvent = <Event>{};
-        
+    
         const currentDay = createTargetIdName(formatDateYYYYMMDD(today));
-        $(currentDay)
-        .find(".tribe-events-calendar-month__calendar-event-title-link")
-        .each((_, element) => {
-            newEvent.title = $(element).text().trim();
-            newEvent.time = 'placeholder time';
-        });
+
+        let titles = 
+            $(currentDay).find(TITLECLASS)
+            .toArray().map((e) => $(e).text().trim());
+
+        let times = 
+            $(currentDay).find(TIMECLASS)
+            .toArray().map((e) => $(e).text().trim());
+
+        for(let i = 0; i < titles.length; i++){
+            let eventTime: string = times.slice(0, 2).join(" - ");
+            times = times.slice(2);
+            weekday.events.push({
+                title: titles.shift() as string,
+                time: eventTime
+            })
+        }
+        console.log(weekday);
         calendarWeek.push(weekday);  
     }
 
