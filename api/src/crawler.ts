@@ -1,19 +1,10 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
+import { CalendarDate, Event } from "./types";
 
 const TARGETURL: string = "https://laketravislibrary.org/meeting-room/";
 const TITLECLASS: string = ".tribe-events-calendar-month__calendar-event-title-link";
 const TIMECLASS: string = ".tribe-events-calendar-month__calendar-event-datetime time";
-
-type CalendarDate = {
-    date: number,
-    events: Event[]
-}
-
-type Event = {
-    title: string,
-    time: string
-}
 
 function formatDateYYYYMMDD(date: Date): string {
     // Inputs: a raw date object

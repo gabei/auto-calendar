@@ -1,9 +1,9 @@
-import populateCalendarWeek from './crawler';
-
-import dotenv = require('dotenv');
-dotenv.config();
-
 import express, {Express, Request, Response} from "express";
+import dotenv = require('dotenv');
+import populateCalendarWeek from './crawler';
+import { CalendarDate } from './types';
+
+dotenv.config();
 const app: Express = express();
 const port: number = 3000;
 
@@ -12,7 +12,7 @@ app.get("/", (req: Request, res: Response) => {
 })
 
 app.get("/calendar", async (req: Request, res: Response) => {
-    const response = await populateCalendarWeek();
+    const response: CalendarDate[] = await populateCalendarWeek();
     res.send(response);
 })
 
