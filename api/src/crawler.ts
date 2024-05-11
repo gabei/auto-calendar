@@ -38,12 +38,10 @@ async function populateCalendarWeek (){
         $(currentDay)
         .find(".tribe-events-calendar-month__calendar-event-title-link")
         .each((_, element) => {
-
-            let newEvent = <Event>{};
-            newEvent.title = $(element).text().trim();
-            newEvent.time = 'time AM - time PM';
-            weekday.events.push(newEvent);
-
+            weekday.events.push({
+                    title: $(element).text().trim(),
+                    time: 'time AM - time PM'
+                })
         });
         calendarWeek.push(weekday);  
     }
