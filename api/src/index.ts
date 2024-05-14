@@ -9,21 +9,18 @@ const port: number = 3000;
 
 const cors = require('cors');
 const withOptions = {
-    origin: ["http://localhost:5173", "https://localhost:5173", "localhost:5173"] ,
+    origin: [
+        "http://localhost:5173", 
+        "https://localhost:5173", 
+        "localhost:5173"
+    ],
     succeessStatus: 200
 }
-
 app.use(cors(withOptions));
 
 app.get("/", (req: Request, res: Response) => {
     res.send(`The typescript server is running on port ${port}.`);
 })
-
-// app.get("/calendar", async (req: Request, res: Response) => {
-//     console.log("A request has hit the server @ /calendar");
-//     const response: CalendarDate[] = await populateCalendarWeek();
-//     res.status(200).json(response);
-// })
 
 app.post('/calendar', async (req: Request, res: Response) => {
     console.log("A post request has been sent to the server.");
