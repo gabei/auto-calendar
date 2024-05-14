@@ -19,10 +19,18 @@ app.get("/", (req: Request, res: Response) => {
     res.send(`The typescript server is running on port ${port}.`);
 })
 
-app.get("/calendar", cors(withOptions), async (req: Request, res: Response) => {
-    const response: CalendarDate[] = await populateCalendarWeek();
-    res.send(response);
-})
+// app.get("/calendar", async (req: Request, res: Response) => {
+//     console.log("A request has hit the server @ /calendar");
+//     const response: CalendarDate[] = await populateCalendarWeek();
+//     res.status(200).json(response);
+// })
+
+app.post('/calendar', async (req: Request, res: Response) => {
+    console.log("A post request has been sent to the server.");
+    console.log("Payload is " + req.body);
+    const data: CalendarDate[] = await populateCalendarWeek();
+    res.send({data});
+});
 
 app.listen(port, () => {
     console.log(`Application listening at port http://localhost:${port}`);
