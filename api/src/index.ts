@@ -9,7 +9,7 @@ const port: number = 3000;
 
 const cors = require('cors');
 const withOptions = {
-    origin: "http://localhost:5173/" ,
+    origin: ["http://localhost:5173", "https://localhost:5173", "localhost:5173"] ,
     succeessStatus: 200
 }
 

@@ -6,6 +6,15 @@ export default function Calendar() {
 
     async function handleClick() {
         console.log("Making an http request to the proxy server...");
+
+        const response = await fetch("http://localhost:3000/calendar", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({"Test Post": " Hello world!"})
+        });
+        
+        const data = await response.json();
+        console.log(data);
     }
 
     return (
