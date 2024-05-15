@@ -39,30 +39,7 @@ export default function Calendar() {
             </div>
 
             <div className="Calendar__printable">
-                <div className="Calendar__printable__row">Hello</div>
-                <div className="Calendar__printable__row">Hello</div>
-                <div className="Calendar__printable__row">Hello</div>
-                <div className="Calendar__printable__row">Hello</div>
-                <div className="Calendar__printable__row">Hello</div>
-                <div className="Calendar__printable__row">Hello</div>
-                <div className="Calendar__printable__row">Hello</div>
-                <div className="Calendar__printable__row">Hello</div>
-                <div className="Calendar__printable__row">Hello</div>
-                <div className="Calendar__printable__row">Hello</div>
-                <div className="Calendar__printable__row">Hello</div>
-                <div className="Calendar__printable__row">Hello</div>
-                <div className="Calendar__printable__row">Hello</div>
-                <div className="Calendar__printable__row">Hello</div>
-                <div className="Calendar__printable__row">Hello</div>
-                <div className="Calendar__printable__row">Hello</div>
-                <div className="Calendar__printable__row">Hello</div>
-                <div className="Calendar__printable__row">Hello</div>
-                <div className="Calendar__printable__row">Hello</div>
-                <div className="Calendar__printable__row">Hello</div>
-                <div className="Calendar__printable__row">Hello</div>
-                <div className="Calendar__printable__row">Hello</div>
-                <div className="Calendar__printable__row">Hello</div>
-                <div className="Calendar__printable__row">Hello</div>
+                {/* day components will fill this container to make calendar columns */}
             </div>
             
         </div>//calendar
