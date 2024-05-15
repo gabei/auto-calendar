@@ -1,9 +1,8 @@
-import { ReactNode, useEffect, useState } from 'react';
-import './Calendar.css';
+import { useState } from 'react';
+import './Calendar.scss';
 
 export default function Calendar() {
-    const initialValue = [];
-    const [data , setData] = useState(initialValue);
+    const [data , setData] = useState([]);
 
     async function handleClick() {
         console.log("Making an http request to the proxy server...");
@@ -38,8 +37,34 @@ export default function Calendar() {
             <div>
                 {dateList.length ? dateList : "No data yet..."}
             </div>
+
+            <div className="Calendar__printable">
+                <div className="Calendar__printable__row">Hello</div>
+                <div className="Calendar__printable__row">Hello</div>
+                <div className="Calendar__printable__row">Hello</div>
+                <div className="Calendar__printable__row">Hello</div>
+                <div className="Calendar__printable__row">Hello</div>
+                <div className="Calendar__printable__row">Hello</div>
+                <div className="Calendar__printable__row">Hello</div>
+                <div className="Calendar__printable__row">Hello</div>
+                <div className="Calendar__printable__row">Hello</div>
+                <div className="Calendar__printable__row">Hello</div>
+                <div className="Calendar__printable__row">Hello</div>
+                <div className="Calendar__printable__row">Hello</div>
+                <div className="Calendar__printable__row">Hello</div>
+                <div className="Calendar__printable__row">Hello</div>
+                <div className="Calendar__printable__row">Hello</div>
+                <div className="Calendar__printable__row">Hello</div>
+                <div className="Calendar__printable__row">Hello</div>
+                <div className="Calendar__printable__row">Hello</div>
+                <div className="Calendar__printable__row">Hello</div>
+                <div className="Calendar__printable__row">Hello</div>
+                <div className="Calendar__printable__row">Hello</div>
+                <div className="Calendar__printable__row">Hello</div>
+                <div className="Calendar__printable__row">Hello</div>
+                <div className="Calendar__printable__row">Hello</div>
+            </div>
             
-            
-        </div>
+        </div>//calendar
     )
 }
