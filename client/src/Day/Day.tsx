@@ -1,11 +1,16 @@
 import './Day.scss';
 
 type dayProps = {
-    data: object
+    date: number,
+    events: []
 }
 
 const Day = (props: dayProps) => {
     console.log(props);
+
+    return (
+        <div>{props.date}</div>
+    )
 }
 
 export default Day;

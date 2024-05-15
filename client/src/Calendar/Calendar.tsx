@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './Calendar.scss';
+import Day from '../Day/Day';
 
 export default function Calendar() {
     const [data , setData] = useState([]);
@@ -21,7 +22,7 @@ export default function Calendar() {
 
     const dateList = (
         data.map((day) => {
-            return <li key={day.date}>{day.date}</li>
+            return <Day date={day.date} events={day.events} key={day.date} />
         })
     )
 
