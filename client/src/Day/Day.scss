@@ -1,0 +1,24 @@
+.Day {
+    padding: 10px;
+
+
+
+
+
+
+    &__event {
+        list-style-type: none;
+        padding: 10px;
+        border: 1px solid black;
+        margin: 10px auto;
+        font-size: 12px;
+
+        & h3 {
+            margin: 0;
+        }
+
+        & p {
+            margin: 0;
+        }
+    }
+}

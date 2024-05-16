@@ -35,12 +35,9 @@ export default function Calendar() {
                 name="Calendar__input" />
             <button 
                 onClick={handleClick}>Get Dates</button>
-            <div>
-                {dateList.length ? dateList : "No data yet..."}
-            </div>
-
             <div className="Calendar__printable">
                 {/* day components will fill this container to make calendar columns */}
+                {dateList.length ? dateList : "No data yet..."}
             </div>
             
         </div>//calendar

@@ -8,8 +8,31 @@ type dayProps = {
 const Day = (props: dayProps) => {
     console.log(props);
 
+    // const mapEvents = () =>  {
+    //     return props.events.map((event) => {
+    //         <li className="Day__event">
+    //             <h3>{event.title}</h3>
+    //             <p>{event.time}</p>
+    //         </li>
+    //     })
+    // }
+
+    const mapEvents = (
+        props.events.map((event) => {
+            return (
+                <li className="Day__event">
+                    <h3>{event.title}</h3>
+                    <p>{event.time}</p>
+                </li>
+            )
+        })
+    )
+
     return (
-        <div>{props.date}</div>
+        <div className="Day">
+            <h2>{props.date}</h2>
+            <div>{mapEvents}</div>
+        </div>
     )
 }
 
