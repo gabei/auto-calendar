@@ -31,7 +31,7 @@ const Day = (props: dayProps) => {
     return (
         <div className="Day">
             <h2>{props.date}</h2>
-            <div>{mapEvents}</div>
+            <div className='Day__events-container'>{mapEvents}</div>
         </div>
     )
 }
