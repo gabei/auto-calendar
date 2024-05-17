@@ -25,7 +25,7 @@ export default function Calendar(props) {
 
     const PrintableCalendar = () => {
         return (
-            <div className="Calendar__printable">
+            <div className="Calendar__content">
                 {dateList}
                 <CalendarNotice />
             </div>

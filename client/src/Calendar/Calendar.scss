@@ -1,12 +1,15 @@
 .Calendar {
     width: 11in;
     height: 8.5in;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 1px solid black;
-    &__printable {
+
+    &__content {
         width: 9in;
-        height: 600px;
-        margin-top: 50px;
-        margin: 50px auto;
         display: grid;
         grid-template-columns: repeat(6, 1fr);
 
