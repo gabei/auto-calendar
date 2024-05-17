@@ -8,15 +8,16 @@
     align-items: center;
     border: 1px solid black;
 
+    &__title {
+        font-size: 26px;
+        text-align: center;
+        grid-column: 1 / 7;
+    }
+
     &__content {
         width: 9in;
         display: grid;
         grid-template-columns: repeat(6, 1fr);
-
-
-        & .Day:first-child {
-            border: 1px solid black;
-        }
     }
 
     &__notice {

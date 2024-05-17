@@ -25,10 +25,11 @@ export default function Calendar(props) {
 
     const PrintableCalendar = () => {
         return (
-            <div className="Calendar__content">
-                {dateList}
-                <CalendarNotice />
-            </div>
+                <div className="Calendar__content">
+                    <h1 className="Calendar__title">Meeting Room Schedule</h1>
+                    {dateList}
+                    <CalendarNotice />
+                </div>
         )
     }
 
