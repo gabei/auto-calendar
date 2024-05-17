@@ -20,11 +20,32 @@ export default function Calendar() {
         setData(dates);
     }
 
+    const CalendarNotice = () => {
+        return (
+            <div className="Calendar__notice">
+                <h4>The meeting room is available for public use as a quiet space when not reserved.</h4>
+            </div>
+        )
+    }
+
     const dateList = (
         data.map((day) => {
-            return <Day date={day.date} events={day.events} key={day.date} />
+            return <Day 
+                date={day.date} 
+                weekday={day.weekday}
+                events={day.events} 
+                key={day.date} />
         })
     )
+
+    const PrintableCalendar = () => {
+        return (
+            <div className="Calendar__printable">
+                {dateList}
+                <CalendarNotice />
+            </div>
+        )
+    }
 
     return (
         <div className='Calendar'>
@@ -35,11 +56,9 @@ export default function Calendar() {
                 name="Calendar__input" />
             <button 
                 onClick={handleClick}>Get Dates</button>
-            <div className="Calendar__printable">
-                {/* day components will fill this container to make calendar columns */}
-                {dateList.length ? dateList : "No data yet..."}
-            </div>
-            
+
+            {/*load the calendar only if the dateList is populated} */}
+            {dateList && <PrintableCalendar />}
         </div>//calendar
     )
 }

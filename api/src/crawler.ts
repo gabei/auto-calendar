@@ -42,6 +42,7 @@ export default async function populateCalendarWeek (){
         
         let weekday: CalendarDate = {
             date: today.getDate(),
+            weekday: today.toDateString().slice(0,3),
             events: [] as Event[]
         };
     

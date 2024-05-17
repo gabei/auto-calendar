@@ -56,6 +56,7 @@ test('Function should return array with nested object structure.', async () => {
 
     returnedArray.forEach((item) => {
         expect(item).toHaveProperty("date", expect.any(Number));
+        expect(item).toHaveProperty("weekday", expect.any(String));
         expect(item).toHaveProperty("events", expect.any(Array));
     })
 })

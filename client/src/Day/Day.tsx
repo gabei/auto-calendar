@@ -2,10 +2,12 @@ import './Day.scss';
 
 type dayProps = {
     date: number,
+    weekday: string,
     events: []
 }
 
 const Day = (props: dayProps) => {
+    console.log(props.weekday)
     const dailyEvents = (
         props.events.map((event) => {
             return (
@@ -19,7 +21,8 @@ const Day = (props: dayProps) => {
 
     return (
         <div className="Day">
-            <h2>{props.date}</h2>
+            <h3 className="Day__day-of-week">{props.weekday}</h3>
+            <h3 className="Day__week-date">{props.date}</h3>
             <div className='Day__events-container'>{dailyEvents}</div>
         </div>
     )

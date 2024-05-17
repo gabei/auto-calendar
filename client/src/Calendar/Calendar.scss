@@ -1,14 +1,27 @@
 .Calendar {
     &__printable {
-        width: 90%;
+        width: 80%;
         height: 600px;
         margin-top: 50px;
         margin: 50px auto;
         display: grid;
         grid-template-columns: repeat(6, 1fr);
 
+
         & .Day:first-child {
             border: 1px solid black;
         }
+    }
+
+    &__notice {
+        width: 100%;
+        grid-column: 1 / 7;
+        background-color: #5b9bd5;
+        color: white;
+        font-size: 30px;
+        text-align: center;
+        border: 1px solid black;
+        border-top: none;
+        padding: 20px;
     }
 }

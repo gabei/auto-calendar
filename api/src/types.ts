@@ -1,5 +1,6 @@
 type CalendarDate = {
     date: number,
+    weekday: string
     events: Event[]
 }
 

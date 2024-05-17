@@ -3,11 +3,27 @@
     border: 1px solid black;
     border-left: none;
 
+    &__day-of-week {
+        margin: 0;
+        padding: 5px;
+        background-color: #5b9bd5;
+        color: white;
+        text-align: center;
+        border-bottom: 1px solid black;
+    }
+
+    &__week-date {
+        margin: 0;
+        padding: 5px 10px;
+        text-align: right;
+        font-weight: 400;
+    }
+
 
     &__events-container {
-        //border: 1px solid black;
-        height: 600px;
-        padding: 10px;
+        border-top: 1px solid black;
+        height: 400px;
+        padding: 6px;
     }
 
 
