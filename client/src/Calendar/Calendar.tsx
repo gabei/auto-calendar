@@ -2,8 +2,7 @@ import './Calendar.scss';
 import Day from '../Day/Day';
 
 export default function Calendar(props) {
-    const data = props;
-    console.log(data);
+    const data = props.data;
     
     const CalendarNotice = () => {
         return (
