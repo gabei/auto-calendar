@@ -1,11 +1,14 @@
 .Calendar {
     &__printable {
-        border-top: 1px solid black;
         width: 90%;
         height: 600px;
         margin-top: 50px;
         margin: 50px auto;
         display: grid;
         grid-template-columns: repeat(6, 1fr);
+
+        & .Day:first-child {
+            border: 1px solid black;
+        }
     }
 }

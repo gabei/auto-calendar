@@ -1,10 +1,11 @@
 .Day {
-    padding: 10px;
 
+    border: 1px solid black;
+    border-left: none;
 
 
     &__events-container {
-        border: 1px solid black;
+        //border: 1px solid black;
         height: 600px;
         padding: 10px;
     }
