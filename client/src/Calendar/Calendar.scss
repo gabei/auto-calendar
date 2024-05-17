@@ -1,6 +1,9 @@
 .Calendar {
+    width: 11in;
+    height: 8.5in;
+    border: 1px solid black;
     &__printable {
-        width: 80%;
+        width: 9in;
         height: 600px;
         margin-top: 50px;
         margin: 50px auto;
