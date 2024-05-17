@@ -1,5 +1,6 @@
 .Day {
 
+    height: 5in;
     border: 1px solid black;
     border-left: none;
 
@@ -29,13 +30,17 @@
 
     &__event {
         list-style-type: none;
-        padding: 10px;
+        padding: 6px 10px;
         border: 1px solid black;
         margin: 10px auto;
-        font-size: 12px;
+        font-size: 11px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 85px;
 
         & h3 {
-            margin: 0;
+            margin: 0 0 3px 0;
         }
 
         & p {

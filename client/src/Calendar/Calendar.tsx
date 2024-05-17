@@ -1,28 +1,10 @@
-import { useState } from 'react';
 import './Calendar.scss';
 import Day from '../Day/Day';
 
-
-export default function Calendar() {
-    const [data , setData] = useState([]);
-
-
-    async function handleClick() {
-        console.log("Making an http request to the proxy server...");
-
-        const response = await fetch("http://localhost:3000/calendar", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({"Test Post": " Hello world!"})
-        });
-        
-        const data = await response.json();
-        const dates = data.data;
-        console.log(dates);
-        setData(dates);
-    }
-
-
+export default function Calendar(props) {
+    const data = props;
+    console.log(data);
+    
     const CalendarNotice = () => {
         return (
             <div className="Calendar__notice">
@@ -42,7 +24,6 @@ export default function Calendar() {
         })
     )
 
-
     const PrintableCalendar = () => {
         return (
             <div className="Calendar__printable">
@@ -55,14 +36,6 @@ export default function Calendar() {
     
     return (
         <div className='Calendar'>
-            <label htmlFor="Calendar__input"></label>
-            <input 
-                type="date" 
-                className="Calendar__input" 
-                name="Calendar__input" />
-            <button 
-                onClick={handleClick}>Get Dates</button>
-
             {/*load the calendar only if the dateList is populated} */}
             {dateList && <PrintableCalendar />}
         </div>//calendar
