@@ -7,7 +7,7 @@ type dayProps = {
 }
 
 const Day = (props: dayProps) => {
-    console.log(props.weekday)
+
     const dailyEvents = (
         props.events.map((event) => {
             return (
@@ -18,6 +18,7 @@ const Day = (props: dayProps) => {
             )
         })
     )
+
 
     return (
         <div className="Day">

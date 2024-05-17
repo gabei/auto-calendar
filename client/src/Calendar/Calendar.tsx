@@ -2,8 +2,10 @@ import { useState } from 'react';
 import './Calendar.scss';
 import Day from '../Day/Day';
 
+
 export default function Calendar() {
     const [data , setData] = useState([]);
+
 
     async function handleClick() {
         console.log("Making an http request to the proxy server...");
@@ -20,6 +22,7 @@ export default function Calendar() {
         setData(dates);
     }
 
+
     const CalendarNotice = () => {
         return (
             <div className="Calendar__notice">
@@ -27,6 +30,7 @@ export default function Calendar() {
             </div>
         )
     }
+
 
     const dateList = (
         data.map((day) => {
@@ -38,6 +42,7 @@ export default function Calendar() {
         })
     )
 
+
     const PrintableCalendar = () => {
         return (
             <div className="Calendar__printable">
@@ -47,6 +52,7 @@ export default function Calendar() {
         )
     }
 
+    
     return (
         <div className='Calendar'>
             <label htmlFor="Calendar__input"></label>
