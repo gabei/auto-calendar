@@ -1,7 +1,8 @@
+import React from 'react';
 import './Calendar.scss';
 import Day from '../Day/Day';
 
-export default function Calendar(props) {
+export const Calendar = React.forwardRef((props, ref) => {
     const data = props.data;
     
     const CalendarNotice = () => {
@@ -35,9 +36,11 @@ export default function Calendar(props) {
 
     
     return (
-        <div className='Calendar'>
+        <div className='Calendar' ref={ref}>
             {/*load the calendar only if the dateList is populated} */}
             {dateList && <PrintableCalendar />}
         </div>//calendar
     )
-}
+});
+
+export default Calendar;

@@ -1,11 +1,13 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import { useReactToPrint } from 'react-to-print';
 import './App.scss'
 import Calendar from './Calendar/Calendar'
 
 function App() {
   const [data , setData] = useState([]);
+  const printRef = useRef(null);
 
-    async function handleClick() {
+    const handleGetCalendarData = async () => {
         const response = await fetch("http://localhost:3000/calendar", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
@@ -18,9 +20,9 @@ function App() {
         setData(dates);
     }
 
-    function handlePrint() {
-      
-    }
+    const handlePrintCalendar = useReactToPrint({
+      content: ():null => printRef.current,
+    });
 
   return (
     <div className="App">
@@ -29,10 +31,10 @@ function App() {
                 type="date" 
                 className="Calendar__input" 
                 name="Calendar__input" />
-            <button onClick={handleClick}>Get Dates</button>
-            <button onClick={handlePrint}>Print</button>
+            <button onClick={handleGetCalendarData}>Get Dates</button>
+            <button onClick={handlePrintCalendar}>Print Calendar</button>
 
-      {data.length && <Calendar data={data}></Calendar>}
+      {data.length && <Calendar ref={printRef} data={data}></Calendar>}
     </div>
   )
 }
