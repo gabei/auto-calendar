@@ -1,6 +1,8 @@
 import React from 'react';
 import './Calendar.scss';
 import Day from '../Day/Day';
+import logo from '../assets/ltcl-logo_183x300.jpg';
+import qrcode from '../assets/qrcode.png';
 
 export const Calendar = React.forwardRef((props, ref) => {
     const data = props.data;
@@ -24,7 +26,7 @@ export const Calendar = React.forwardRef((props, ref) => {
         })
     )
 
-    const PrintableCalendar = () => {
+    const CalendarContent = () => {
         return (
                 <div className="Calendar__content">
                     <h1 className="Calendar__title">Meeting Room Schedule</h1>
@@ -38,8 +40,23 @@ export const Calendar = React.forwardRef((props, ref) => {
     return (
         <div className='Calendar' ref={ref}>
             {/*load the calendar only if the dateList is populated} */}
-            {dateList && <PrintableCalendar />}
-        </div>//calendar
+            {dateList && <CalendarContent />}
+            <img 
+                className="Calendar__logo" 
+                src={logo}
+                alt="Library Logo" />
+
+            <div className = "Calendar__qrcode-container">
+                <img 
+                    className="Calendar__qrcode-container__code" 
+                    src={qrcode}
+                    alt="QR Code" />
+                <p className="Calendar__qrcode-container__info">
+                Scan this code to view our online calendar.
+                </p>
+            </div>
+            
+        </div>
     )
 });
 

@@ -5,6 +5,7 @@
     */
 
     font-family: Arial, Helvetica, sans-serif;
+    position: relative;
     width: 11in;
     height: 8.5in;
     margin: 0 auto;
@@ -18,7 +19,7 @@
         // Remove title from flex-flow so calendar is centered.
         position: absolute;
         left: 50%;
-        top: 0.75in;
+        top: 0.45in;
         transform: translateX(-50%);
         font-size: 26px;
         text-align: center;
@@ -46,4 +47,29 @@
         border-top: none;
        
     }
+
+    &__qrcode-container {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        padding: 2px;
+        left: 0.10in;
+        bottom: 0.10in;
+        width: 4in;
+
+        &__code {
+            width: 70px;
+        }
+        &__info {
+            font-size: 13px;
+        } 
+    }
+
+    &__logo {
+        width: 40px;
+        position: absolute;
+        right: .25in;
+        bottom: .25in;
+    }
+
 }
