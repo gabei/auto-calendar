@@ -18,7 +18,6 @@ const Day = (props: dayProps) => {
                         <p>{event.time}</p>
                     </li>
                 </Draggable>
-                
             )
         })
     )
