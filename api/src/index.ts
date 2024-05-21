@@ -1,12 +1,18 @@
 import express, {Express, Request, Response} from "express";
 import dotenv = require('dotenv');
+import bodyParser, { BodyParser } from 'body-parser';
 import populateCalendarWeek from './crawler';
 import { CalendarDate } from './types';
-import bodyParser from 'body-parser';
+
 
 dotenv.config();
 const app: Express = express();
 const port: number = 3000;
+
+
+const jsonParser:BodyParser = bodyParser;
+app.use(jsonParser.json());
+
 
 const cors = require('cors');
 const withOptions = {
@@ -19,8 +25,6 @@ const withOptions = {
 }
 app.use(cors(withOptions));
 
-const jsonParser = require("body-parser");
-app.use(jsonParser.json());
 
 app.get("/", (req: Request, res: Response) => {
     res.send(`The typescript server is running on port ${port}.`);
