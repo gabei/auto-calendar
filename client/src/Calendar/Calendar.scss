@@ -34,6 +34,7 @@
     }
 
     &__notice {
+        padding: .5in;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -59,7 +60,7 @@
         width: 3in;
 
         &__code {
-            width: 70px;
+            width: 100px;
         }
         &__info {
             font-size: 13px;
