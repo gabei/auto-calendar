@@ -34,7 +34,9 @@ function App() {
             <button onClick={handleGetCalendarData}>Get Dates</button>
             <button onClick={handlePrintCalendar}>Print Calendar</button>
 
+      <div className="border-preview-wrapper">
       {data.length && <Calendar ref={printRef} data={data}></Calendar>}
+      </div>
     </div>
   )
 }
