@@ -1,0 +1,38 @@
+.Event {
+    list-style-type: none;
+    padding: 6px 10px;
+    border: 1px solid black;
+    margin: 10px auto;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 1in;
+    cursor: grab;
+
+    & h3 {
+        margin: 0 0 3px 0;
+    }
+
+    & p {
+        margin: 0;
+    }
+
+    &__resize {
+        height: 12px;
+        width:12px;
+        cursor: ns-resize;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(
+            to bottom right, 
+            #fff 50%, #ccc 50%
+        );
+        display: none;
+    }
+}
+
+.visible {
+    display: block
+}

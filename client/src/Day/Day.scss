@@ -28,26 +28,4 @@
         padding: 6px;
         border-top: 1px solid black;
     }
-
-
-    &__event {
-        list-style-type: none;
-        padding: 6px 10px;
-        border: 1px solid black;
-        margin: 10px auto;
-        font-size: 12px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        height: 1in;
-        cursor: grab;
-
-        & h3 {
-            margin: 0 0 3px 0;
-        }
-
-        & p {
-            margin: 0;
-        }
-    }
 }

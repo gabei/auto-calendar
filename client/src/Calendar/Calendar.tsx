@@ -27,7 +27,8 @@ export const Calendar = React.forwardRef((props, ref) => {
                 date={day.date} 
                 weekday={day.weekday}
                 events={day.events} 
-                key={day.date} />
+                key={day.date}
+                controlToggle={props.controlToggle} />
         })
     )
 

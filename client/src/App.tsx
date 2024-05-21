@@ -6,7 +6,15 @@ import Calendar from './Calendar/Calendar'
 function App() {
   const [data , setData] = useState([]);
   const [chosenDate, setChosenDate] = useState('');
+  const [isPrinting, setIsPrinting] = useState(false);
+  const [controlToggle, setControlToggle] = useState(true);
   const printRef = useRef(null);
+
+  const handleToggleControls = () => {
+    setControlToggle((prevToggle) => {
+      return !prevToggle;
+    });
+  }
 
   const handleChange = (inputDate:string):void => { 
     setChosenDate(inputDate);
@@ -28,6 +36,8 @@ function App() {
 
   const handlePrintCalendar = useReactToPrint({
     content: ():null => printRef.current,
+    onBeforeGetContent: () => setIsPrinting(true),
+    onAfterPrint: () => setIsPrinting(false)
   });
 
   return (
@@ -39,9 +49,11 @@ function App() {
                 name="Calendar__input"/>
             <button onClick={handleGetCalendarData}>Get Data</button>
             <button onClick={handlePrintCalendar}>Print Calendar</button>
+            <button onClick={handleToggleControls}>Toggle Controls</button>
 
       <div className="border-preview-wrapper">
-      {data.length && <Calendar ref={printRef} data={data}></Calendar>}
+      {data.length && 
+      <Calendar ref={printRef} data={data} controlToggle={controlToggle}></Calendar>}
       </div>
     </div>
   )
