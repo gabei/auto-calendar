@@ -11,7 +11,7 @@
     width: $PAGE-LENGTH;
     height: $PAGE-WIDTH;
     margin: 0 auto;
-    padding: 0 1in;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,6 +28,7 @@
     }
 
     &__content {
+        width: 9in;
         display: grid;
         grid-template-columns: repeat(6, 1fr);
     }
