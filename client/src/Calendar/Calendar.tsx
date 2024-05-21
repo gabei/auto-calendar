@@ -10,7 +10,9 @@ export const Calendar = React.forwardRef((props, ref) => {
     const CalendarNotice = () => {
         return (
             <div className="Calendar__notice">
-                <h4>The meeting room is available for public use as a quiet space when not reserved.</h4>
+                <div className="Calendar__notice--title-wrapper">
+                <h4>The meeting room is available for public use as a quiet space when not reserved. Scan for more information.</h4>
+                </div>
                 <img className="Calendar__qrcode-container__code" 
                     src={qrcode}
                     alt="QR Code" />
