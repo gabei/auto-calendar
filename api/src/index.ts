@@ -33,7 +33,7 @@ app.get("/", (req: Request, res: Response) => {
 app.post('/calendar', async (req: Request, res: Response) => {
     console.log("A post request has been sent to the server.");
     console.log("Payload is " + req.body.date);
-    const data: CalendarDate[] = await populateCalendarWeek();
+    const data: CalendarDate[] = await populateCalendarWeek(req.body.date);
     res.send({data});
 });
 
