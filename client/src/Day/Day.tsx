@@ -12,7 +12,7 @@ const Day = (props: dayProps) => {
     const dailyEvents = (
         props.events.map((event) => {
             return (
-                <Draggable axis='y'>
+                <Draggable axis='y' handle={".Day__event"}>
                     <li className="Day__event">
                         <h3>{event.title}</h3>
                         <p>{event.time}</p>
