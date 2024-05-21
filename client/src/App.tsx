@@ -14,8 +14,6 @@ function App() {
   }
 
   const handleGetCalendarData = async () => {
-    console.log(chosenDate);
-
     const response = await fetch("http://localhost:3000/calendar", {
         method: "POST",
         headers: {"Content-Type": "application/json"},

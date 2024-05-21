@@ -8,7 +8,6 @@ const TITLECLASS: string = ".tribe-events-calendar-month__calendar-event-title-l
 const TIMECLASS: string = ".tribe-events-calendar-month__calendar-event-datetime time";
 
 
-
 function formatDateYYYYMMDD(date: Date): string {
     // Inputs: a raw date object
     // Outputs: A string of the date in format YYYY-MM-DD
@@ -35,10 +34,10 @@ export default async function populateCalendarWeek (userDate: string){
 
     const calendarWeek: CalendarDate[] = []; 
 
+    // begin with monday (starting date) and iterate through saturday
+    // using i to increase date object's date
     userDate += "T00:00:00"; // set local time zone
     const startingDate = new Date(userDate);
-    
-    // begin with monday and iterate through saturday
     let today = new Date(startingDate);
     let weekLength = 6;
 
