@@ -20,9 +20,9 @@
         // Remove title from flex flow so calendar is centered.
         position: absolute;
         left: 50%;
-        top: 0.45in;
+        top: 0.175in;
         transform: translateX(-50%);
-        font-size: 30px;
+        font-size: 31px;
         text-align: center;
         grid-column: 1 / 7;
     }
@@ -36,16 +36,23 @@
     &__notice {
         display: flex;
         align-items: center;
-        justify-content: center;
-        width: 100%;
+        justify-content: space-around;
         height: 1.5in;
-        grid-column: 1 / 7;
+        padding: 0.2in;
+        grid-column: 1/7;
         background-color: #5b9bd5;
         color: white;
-        font-size: 30px;
+        font-size: 33px;
         text-align: center;
         border: 1px solid black;
+          border-top-width: 1px;
+          border-top-style: solid;
+          border-top-color: black;
         border-top: none;
+        
+        &--title-wrapper {
+            width: 6in;
+        }
        
     }
 
@@ -59,7 +66,7 @@
         width: 3in;
 
         &__code {
-            width: 70px;
+            width: 1.3in;
         }
         &__info {
             font-size: 13px;

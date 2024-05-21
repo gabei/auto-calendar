@@ -2,7 +2,7 @@ import React from 'react';
 import './Calendar.scss';
 import Day from '../Day/Day';
 import logo from '../assets/ltcl-logo_183x300.jpg';
-import qrcode from '../assets/qrcode.jpg';
+import qrcode from '../assets/qrcode_uncropped.png';
 
 export const Calendar = React.forwardRef((props, ref) => {
     const data = props.data;
@@ -10,7 +10,12 @@ export const Calendar = React.forwardRef((props, ref) => {
     const CalendarNotice = () => {
         return (
             <div className="Calendar__notice">
-                <h4>The meeting room is available for public use as a quiet space when not reserved.</h4>
+                <div className="Calendar__notice--title-wrapper">
+                <h4>The meeting room is available for public use as a quiet space when not reserved. Scan for more information.</h4>
+                </div>
+                <img className="Calendar__qrcode-container__code" 
+                    src={qrcode}
+                    alt="QR Code" />
             </div>
         )
     }
@@ -39,25 +44,8 @@ export const Calendar = React.forwardRef((props, ref) => {
     
     return (
             <div className='Calendar' ref={ref}>
-                
                 {/*load the calendar only if the dateList is populated} */}
                 {dateList && <CalendarContent />}
-                
-                <img 
-                    className="Calendar__logo" 
-                    src={logo}
-                    alt="Library Logo" />
-
-                <div className = "Calendar__qrcode-container">
-                    <img 
-                        className="Calendar__qrcode-container__code" 
-                        src={qrcode}
-                        alt="QR Code" />
-                    <p className="Calendar__qrcode-container__info">
-                    Scan for more information about using our meeting room.
-                    </p>
-                </div>
-                
             </div>
     )
 });
