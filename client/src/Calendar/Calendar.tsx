@@ -54,7 +54,7 @@ export const Calendar = React.forwardRef((props, ref) => {
                         src={qrcode}
                         alt="QR Code" />
                     <p className="Calendar__qrcode-container__info">
-                    Scan this code to view our online calendar.
+                    Scan for more information about using our meeting room.
                     </p>
                 </div>
                 
