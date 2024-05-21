@@ -37,8 +37,6 @@ export default async function populateCalendarWeek (userDate: string){
 
     userDate += "T00:00:00"; // set local time zone
     const startingDate = new Date(userDate);
-    console.log("user date: " + userDate.toLocaleUpperCase());
-    console.log("STARTING DATE: " + startingDate);
     
     // begin with monday and iterate through saturday
     let today = new Date(startingDate);
@@ -46,9 +44,7 @@ export default async function populateCalendarWeek (userDate: string){
 
     for(let i = 0; i < weekLength; i++) {
         today.setDate(startingDate.getDate() + i);
-        console.log("today: " + today);
 
-        
         let weekday: CalendarDate = {
             date: today.getDate(),
             weekday: today.toDateString().slice(0,3),
@@ -57,15 +53,13 @@ export default async function populateCalendarWeek (userDate: string){
     
         const currentDay = createTargetIdName(formatDateYYYYMMDD(today));
 
-        console.log("currentDay: " + currentDay)
-
         let titles = 
             $(currentDay).find(TITLECLASS)
-            .toArray().map((e) => $(e).text().trim());
+            .toArray().map((title) => $(title).text().trim());
 
         let times = 
             $(currentDay).find(TIMECLASS)
-            .toArray().map((e) => $(e).text().trim());
+            .toArray().map((time) => $(time).text().trim());
 
         for(let i = 0; i < titles.length; i++){
             let eventTime: string = times.splice(0, 2).join(" - ");
