@@ -15,7 +15,7 @@ const Day = (props: dayProps) => {
         props.events.map((event) => {
             return (
                 <Draggable axis='y' handle={".Day__event"}>
-                    <Event title={event.title} time={event.time} printing={props.controlToggle} />
+                    <Event title={event.title} time={event.time} controlToggle={props.controlToggle} />
                 </Draggable>
             )
         })
