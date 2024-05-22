@@ -11,13 +11,30 @@ type eventProps = {
 const Event = (props: eventProps) => {
     const [isDragging, setIsDragging] = useState(false);
 
+    const handleMouseDown = () => {
+        console.log("Mouse down")
+        setIsDragging(true)
+    }
+
+    const handleMouseMove = () => {
+        if(isDragging) console.log("Mouse move")
+    }
+
+    const handleMouseUp = () => {
+        setIsDragging(false);
+        console.log("Mouse up")
+    }
+
     return (
         <Draggable axis='y' handle={".Event"}>
             <div className="Event">
                 <h3>{props.title}</h3>
                 <p>{props.time}</p>
                 <div 
-                    className={"Event__resize " + (props.controlToggle ? "visible" : "") }></div>
+                    className={"Event__resize " + (props.controlToggle ? "visible" : "") }
+                    onMouseDown={handleMouseDown}
+                    onMouseMove={handleMouseMove}
+                    onMouseUp={handleMouseUp}></div>
             </div>
         </Draggable>
     )

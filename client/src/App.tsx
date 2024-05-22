@@ -36,8 +36,6 @@ function App() {
 
   const handlePrintCalendar = useReactToPrint({
     content: ():null => printRef.current,
-    onBeforeGetContent: () => setIsPrinting(true),
-    onAfterPrint: () => setIsPrinting(false)
   });
 
   return (
