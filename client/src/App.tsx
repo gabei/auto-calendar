@@ -33,6 +33,9 @@ function App() {
     const data = await response.json();
     const dates = data.data;
 
+
+    console.log(data.data);
+
     setData(dates);
   }
 

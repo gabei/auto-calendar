@@ -60,13 +60,15 @@ export default async function populateCalendarWeek (userDate: string){
             $(currentDay).find(TIMECLASS)
             .toArray().map((time) => $(time).text().trim());
 
-        for(let i = 0; i < titles.length; i++){
+        titles.forEach((title)=> {
             let eventTime: string = times.splice(0, 2).join(" - ");
+            let newTitle = title;
             weekday.events.push({
-                title: titles.shift() as string,
+                title: newTitle as string,
                 time: eventTime
             })
-        }
+        });
+        
         calendarWeek.push(weekday);  
     }
     return calendarWeek;
