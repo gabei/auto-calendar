@@ -9,32 +9,46 @@ type eventProps = {
 }
 
 const Event = (props: eventProps) => {
-    const [isDragging, setIsDragging] = useState(false);
+    const [resize, setResize] = useState({
+        active: false,
+        y: 0
+    });
 
-    const handleMouseDown = () => {
+    const [height, setHeight] = useState(96);
+
+    const handleMouseDown = (e: MouseEvent) => {
         console.log("Mouse down")
-        setIsDragging(true)
+        setResize({ 
+            active: true,
+            y: e.clientY
+        });
     }
 
     const handleMouseMove = () => {
-        if(isDragging) console.log("Mouse move")
+        const { active, y } = resize;
+        if(active) console.log("Mouse moving");
+        
     }
 
     const handleMouseUp = () => {
-        setIsDragging(false);
         console.log("Mouse up")
+        setResize({...resize, active: false});
+        
     }
 
     return (
-        <Draggable axis='y' handle={".Event"}>
+        <Draggable axis='y' handle={".Event__reposition"}>
             <div className="Event">
                 <h3>{props.title}</h3>
                 <p>{props.time}</p>
+                <div 
+                    className={"Event__reposition " + (props.controlToggle ? "visible" : "") }></div>
                 <div 
                     className={"Event__resize " + (props.controlToggle ? "visible" : "") }
                     onMouseDown={handleMouseDown}
                     onMouseMove={handleMouseMove}
                     onMouseUp={handleMouseUp}></div>
+                
             </div>
         </Draggable>
     )

@@ -8,7 +8,6 @@
     flex-direction: column;
     justify-content: flex-start;
     height: 1in;
-    cursor: grab;
 
     & h3 {
         margin: 0 0 3px 0;
@@ -28,6 +27,20 @@
         background: linear-gradient(
             to bottom right, 
             #fff 50%, #ccc 50%
+        );
+        display: none;
+    }
+
+    &__reposition {
+        height: 12px;
+        width:12px;
+        cursor: grab;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        background: repeating-linear-gradient(
+            180deg, 
+            #fff, #fff 15%, #bbb 15%, #bbb 33.33% 
         );
         display: none;
     }
