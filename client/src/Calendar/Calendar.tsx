@@ -1,7 +1,6 @@
 import React from 'react';
 import './Calendar.scss';
 import Day from '../Day/Day';
-import logo from '../assets/ltcl-logo_183x300.jpg';
 import qrcode from '../assets/qrcode_uncropped.png';
 
 export const Calendar = React.forwardRef((props, ref) => {

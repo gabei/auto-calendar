@@ -1,3 +1,8 @@
+/*
+    Event resizing code is modified from this stack overflow answer:
+    https://stackoverflow.com/questions/60792300/how-to-create-a-resizable-component-in-react
+*/
+
 import { useState } from "react";
 import Draggable from 'react-draggable';
 import './Event.scss';
@@ -13,8 +18,9 @@ const Event = (props: eventProps) => {
         active: false,
         y: 0
     });
-
     const [height, setHeight] = useState(96);
+    const eventStyle = {height: `${height}px`}
+
 
     const handleMouseDown = (e: MouseEvent) => {
         console.log("Mouse down")
@@ -23,6 +29,7 @@ const Event = (props: eventProps) => {
             y: e.clientY
         });
     }
+
 
     const handleMouseMove = (e: MouseEvent) => {
         const { active, y } = resize;
@@ -35,8 +42,8 @@ const Event = (props: eventProps) => {
             setResize( {...resize, y: e.clientY});
             setHeight(newHeight);
         }
-        
     }
+
 
     const handleMouseUp = () => {
         console.log("Mouse up")
@@ -44,9 +51,7 @@ const Event = (props: eventProps) => {
         
     }
 
-    const eventStyle = {
-        height: `${height}px`
-    }
+
 
     return (
         <Draggable axis='y' handle={".Event__reposition"}>

@@ -6,9 +6,9 @@ import Calendar from './Calendar/Calendar'
 function App() {
   const [data , setData] = useState([]);
   const [chosenDate, setChosenDate] = useState('');
-  const [isPrinting, setIsPrinting] = useState(false);
   const [controlToggle, setControlToggle] = useState(true);
   const printRef = useRef(null);
+
 
   const handleToggleControls = () => {
     setControlToggle((prevToggle) => {
@@ -16,10 +16,12 @@ function App() {
     });
   }
 
+
   const handleChange = (inputDate:string):void => { 
     setChosenDate(inputDate);
   
   }
+
 
   const handleGetCalendarData = async () => {
     const response = await fetch("http://localhost:3000/calendar", {
@@ -34,10 +36,12 @@ function App() {
     setData(dates);
   }
 
+
   const handlePrintCalendar = useReactToPrint({
     content: ():null => printRef.current,
   });
 
+  
   return (
     <div className="App">
       <label htmlFor="Calendar__input"></label>
