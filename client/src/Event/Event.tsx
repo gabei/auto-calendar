@@ -3,7 +3,7 @@
     https://stackoverflow.com/questions/60792300/how-to-create-a-resizable-component-in-react
 */
 
-import { useState } from "react";
+import { useState, memo } from "react";
 import Draggable from 'react-draggable';
 import './Event.scss';
 
@@ -52,9 +52,8 @@ const Event = (props: eventProps) => {
     }
 
 
-
     return (
-        <Draggable axis='y' handle={".Event__reposition"}>
+        <Draggable axis='y' handle={".Event__reposition"} key={props.title}>
             <div className="Event" style={eventStyle}>
                 <h3>{props.title}</h3>
                 <p>{props.time}</p>
@@ -71,4 +70,5 @@ const Event = (props: eventProps) => {
     )
 }
 
-export default Event;
+const memoizedEvent = memo(Event);
+export default memoizedEvent;
