@@ -24,9 +24,17 @@ const Event = (props: eventProps) => {
         });
     }
 
-    const handleMouseMove = () => {
+    const handleMouseMove = (e: MouseEvent) => {
         const { active, y } = resize;
-        if(active) console.log("Mouse moving");
+        if(active){
+            console.log("Mouse moving");
+            const yDiff: number = Math.abs(y - e.clientY);
+            const newHeight: number 
+                = y > e.clientY ? height - yDiff : height + yDiff;
+
+            setResize( {...resize, y: e.clientY});
+            setHeight(newHeight);
+        }
         
     }
 
@@ -36,9 +44,13 @@ const Event = (props: eventProps) => {
         
     }
 
+    const eventStyle = {
+        height: `${height}px`
+    }
+
     return (
         <Draggable axis='y' handle={".Event__reposition"}>
-            <div className="Event">
+            <div className="Event" style={eventStyle}>
                 <h3>{props.title}</h3>
                 <p>{props.time}</p>
                 <div 
