@@ -1,10 +1,11 @@
 import './Day.scss';
 import Draggable from 'react-draggable';
+import Event from '../Event/Event';
 
 type dayProps = {
     date: number,
     weekday: string,
-    events: []
+    events: [],
 }
 
 const Day = (props: dayProps) => {
@@ -13,10 +14,9 @@ const Day = (props: dayProps) => {
         props.events.map((event) => {
             return (
                 <Draggable axis='y' handle={".Day__event"}>
-                    <li className="Day__event">
-                        <h3>{event.title}</h3>
-                        <p>{event.time}</p>
-                    </li>
+                    <Event title={event.title} 
+                    time={event.time} 
+                    key={event.title}/>
                 </Draggable>
             )
         })

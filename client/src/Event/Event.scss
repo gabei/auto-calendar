@@ -1,0 +1,47 @@
+.Event {
+    list-style-type: none;
+    padding: 6px 10px;
+    border: 1px solid black;
+    margin: 10px auto;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    resize: vertical;
+    overflow: auto;
+
+    & h3 {
+        margin: 0 0 3px 0;
+    }
+
+    & p {
+        margin: 0;
+    }
+
+    &__resize {
+        height: 12px;
+        width:12px;
+        overflow: visible;
+        cursor: ns-resize;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(
+            to bottom right, 
+            #fff 50%, #ccc 50%
+        );
+    }
+
+    &__reposition {
+        height: 12px;
+        width:12px;
+        cursor: grab;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        background: repeating-linear-gradient(
+            180deg, 
+            #fff, #fff 15%, #bbb 15%, #bbb 33.33% 
+        );
+    }
+}

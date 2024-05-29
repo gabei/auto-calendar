@@ -20,7 +20,7 @@
         // Remove title from flex flow so calendar is centered.
         position: absolute;
         left: 50%;
-        top: 0.175in;
+        top: 0.00in;
         transform: translateX(-50%);
         font-size: 31px;
         text-align: center;
@@ -28,7 +28,7 @@
     }
 
     &__content {
-        width: 9in;
+        width: 9.5in;
         display: grid;
         grid-template-columns: repeat(6, 1fr);
     }

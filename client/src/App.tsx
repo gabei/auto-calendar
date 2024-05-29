@@ -8,10 +8,19 @@ function App() {
   const [chosenDate, setChosenDate] = useState('');
   const printRef = useRef(null);
 
+
+  const handleToggleControls = () => {
+    setControlToggle((prevToggle) => {
+      return !prevToggle;
+    });
+  }
+
+
   const handleChange = (inputDate:string):void => { 
     setChosenDate(inputDate);
   
   }
+
 
   const handleGetCalendarData = async () => {
     const response = await fetch("http://localhost:3000/calendar", {
@@ -26,10 +35,12 @@ function App() {
     setData(dates);
   }
 
+
   const handlePrintCalendar = useReactToPrint({
     content: ():null => printRef.current,
   });
 
+  
   return (
     <div className="App">
       <label htmlFor="Calendar__input"></label>
@@ -41,7 +52,8 @@ function App() {
             <button onClick={handlePrintCalendar}>Print Calendar</button>
 
       <div className="border-preview-wrapper">
-      {data.length && <Calendar ref={printRef} data={data}></Calendar>}
+      {data.length && 
+      <Calendar ref={printRef} data={data}></Calendar>}
       </div>
     </div>
   )
