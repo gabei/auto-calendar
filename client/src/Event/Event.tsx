@@ -48,7 +48,7 @@ const Event = (props: eventProps) => {
     }
 
     return (
-        <Draggable axis='y' key={props.title}>
+        <Draggable axis='y' handle={".Event__reposition"}key={props.title}>
             <div className="Event" style={eventStyle}>
                 <h3>{props.title}</h3>
                 <p>{props.time}</p>
