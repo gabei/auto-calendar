@@ -23,7 +23,6 @@ const Event = (props: eventProps) => {
 
 
     const handleMouseDown = (e: MouseEvent) => {
-        console.log("Mouse down")
         setResize({ 
             active: true,
             y: e.clientY
@@ -34,7 +33,6 @@ const Event = (props: eventProps) => {
     const handleMouseMove = (e: MouseEvent) => {
         const { active, y } = resize;
         if(active){
-            console.log("Mouse moving");
             const yDiff: number = Math.abs(y - e.clientY);
             const newHeight: number 
                 = y > e.clientY ? height - yDiff : height + yDiff;
@@ -46,9 +44,7 @@ const Event = (props: eventProps) => {
 
 
     const handleMouseUp = () => {
-        console.log("Mouse up")
         setResize({...resize, active: false});
-        
     }
 
 
@@ -70,5 +66,9 @@ const Event = (props: eventProps) => {
     )
 }
 
-const memoizedEvent = memo(Event);
+const alwaysCallPropsEqual = () => {
+    return true;
+}
+
+const memoizedEvent = memo(Event, alwaysCallPropsEqual);
 export default memoizedEvent;

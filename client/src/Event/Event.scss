@@ -27,7 +27,7 @@
             to bottom right, 
             #fff 50%, #ccc 50%
         );
-        display: none;
+        opacity: 1;
     }
 
     &__reposition {
@@ -41,10 +41,10 @@
             180deg, 
             #fff, #fff 15%, #bbb 15%, #bbb 33.33% 
         );
-        display: none;
+        opacity: 1;
     }
 }
 
 .visible {
-    display: block
+    opacity: 0
 }
