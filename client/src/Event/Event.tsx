@@ -10,8 +10,8 @@ import './Event.scss';
 type eventProps = {
     title: string,
     time: string,
-    controlToggle: boolean
 }
+
 
 const Event = (props: eventProps) => {
     const [resize, setResize] = useState({
@@ -47,16 +47,15 @@ const Event = (props: eventProps) => {
         setResize({...resize, active: false});
     }
 
-
     return (
-        <Draggable axis='y' handle={".Event__reposition"} key={props.title}>
+        <Draggable axis='y' key={props.title}>
             <div className="Event" style={eventStyle}>
                 <h3>{props.title}</h3>
                 <p>{props.time}</p>
                 <div 
-                    className={"Event__reposition " + (props.controlToggle ? "visible" : "") }></div>
+                    className="Event__reposition"></div>
                 <div 
-                    className={"Event__resize " + (props.controlToggle ? "visible" : "") }
+                    className="Event__resize "
                     onMouseDown={handleMouseDown}
                     onMouseMove={handleMouseMove}
                     onMouseUp={handleMouseUp}></div>

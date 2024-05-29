@@ -6,7 +6,6 @@ type dayProps = {
     date: number,
     weekday: string,
     events: [],
-    controlToggle: boolean
 }
 
 const Day = (props: dayProps) => {
@@ -17,7 +16,6 @@ const Day = (props: dayProps) => {
                 <Draggable axis='y' handle={".Day__event"}>
                     <Event title={event.title} 
                     time={event.time} 
-                    controlToggle={props.controlToggle} 
                     key={event.title}/>
                 </Draggable>
             )

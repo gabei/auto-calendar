@@ -6,7 +6,6 @@ import Calendar from './Calendar/Calendar'
 function App() {
   const [data , setData] = useState([]);
   const [chosenDate, setChosenDate] = useState('');
-  const [controlToggle, setControlToggle] = useState(true);
   const printRef = useRef(null);
 
 
@@ -33,9 +32,6 @@ function App() {
     const data = await response.json();
     const dates = data.data;
 
-
-    console.log(data.data);
-
     setData(dates);
   }
 
@@ -54,11 +50,10 @@ function App() {
                 name="Calendar__input"/>
             <button onClick={handleGetCalendarData}>Get Data</button>
             <button onClick={handlePrintCalendar}>Print Calendar</button>
-            <button onClick={handleToggleControls}>Toggle Controls</button>
 
       <div className="border-preview-wrapper">
       {data.length && 
-      <Calendar ref={printRef} data={data} controlToggle={controlToggle}></Calendar>}
+      <Calendar ref={printRef} data={data}></Calendar>}
       </div>
     </div>
   )
