@@ -24,7 +24,11 @@
 
 
 @media print {
-  .Event__reposition, .Event__resize {
+  .Event__reposition {
     display: none;
+  }
+
+  .Event {
+    resize: none;
   }
 }
