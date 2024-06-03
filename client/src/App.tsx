@@ -54,7 +54,7 @@ function App() {
             <button onClick={handlePrintCalendar}>Print Calendar</button>
 
       
-      { data.length && <WrappedCalendar /> }
+      { data.length ? <WrappedCalendar /> : null}
       
     </div>
   )
