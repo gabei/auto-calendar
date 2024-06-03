@@ -33,6 +33,15 @@ function App() {
     content: ():null => printRef.current,
   });
 
+
+  const WrappedCalendar = () => {
+    return (
+      <div className="border-preview-wrapper">
+        <Calendar ref={printRef} data={data}></Calendar>
+      </div>
+    )
+  }
+
   
   return (
     <div className="App">
@@ -45,12 +54,7 @@ function App() {
             <button onClick={handlePrintCalendar}>Print Calendar</button>
 
       
-      {
-      data.length && (
-        <div className="border-preview-wrapper">
-          <Calendar ref={printRef} data={data}></Calendar>
-        </div>
-      )}
+      { data.length && <WrappedCalendar /> }
       
     </div>
   )
