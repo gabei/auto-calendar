@@ -9,13 +9,6 @@ function App() {
   const printRef = useRef(null);
 
 
-  const handleToggleControls = () => {
-    setControlToggle((prevToggle) => {
-      return !prevToggle;
-    });
-  }
-
-
   const handleChange = (inputDate:string):void => { 
     setChosenDate(inputDate);
   
@@ -51,10 +44,14 @@ function App() {
             <button onClick={handleGetCalendarData}>Get Data</button>
             <button onClick={handlePrintCalendar}>Print Calendar</button>
 
-      <div className="border-preview-wrapper">
-      {data.length && 
-      <Calendar ref={printRef} data={data}></Calendar>}
-      </div>
+      
+      {
+      data.length && (
+        <div className="border-preview-wrapper">
+          <Calendar ref={printRef} data={data}></Calendar>
+        </div>
+      )}
+      
     </div>
   )
 }
