@@ -4,6 +4,8 @@
     /* 
     Printing styles must be applied directly within this element to be considered during processing by react-to-print.
     See: https://github.com/MatthewHerbst/react-to-print#examples
+
+    Additional printing styles should be added as part of the printing media query under App.scss if being ignored by the printing menu
     */
 
     font-family: Arial, Helvetica, sans-serif;
@@ -40,20 +42,20 @@
         height: 1.5in;
         padding: 0.2in;
         grid-column: 1/7;
-        background-color: #5b9bd5;
+        background-color: $library-blue;
         color: white;
         font-size: 33px;
         text-align: center;
         border: 1px solid black;
-          border-top-width: 1px;
-          border-top-style: solid;
-          border-top-color: black;
+        border-top-width: 1px;
+        border-top-style: solid;
+        border-top-color: black;
         border-top: none;
-        
+
         &--title-wrapper {
             width: 6in;
         }
-       
+
     }
 
     &__qrcode-container {
@@ -68,10 +70,11 @@
         &__code {
             width: 1.3in;
         }
+
         &__info {
             font-size: 13px;
             margin-left: 0.15in;
-        } 
+        }
     }
 
     &__logo {
