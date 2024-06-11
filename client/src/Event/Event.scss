@@ -10,6 +10,10 @@
     resize: vertical;
     overflow: auto;
 
+    @media print {
+        resize: none;
+    }
+
     & h3 {
         margin: 0 0 3px 0;
     }
@@ -43,5 +47,9 @@
             180deg, 
             #fff, #fff 15%, #bbb 15%, #bbb 33.33% 
         );
+
+        @media print {
+            display: none;
+        }
     }
 }

@@ -21,14 +21,3 @@
   margin: 0 auto;
   border: 1px solid black;
 }
-
-
-@media print {
-  .Event__reposition {
-    display: none;
-  }
-
-  .Event {
-    resize: none;
-  }
-}
