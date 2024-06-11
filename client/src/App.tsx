@@ -42,6 +42,12 @@ function App() {
     )
   }
 
+  const PrintButton = () => {
+    return (
+      <button onClick={handlePrintCalendar}>Print Calendar</button>
+    )
+  }
+
   
   return (
     <div className="App">
@@ -51,9 +57,8 @@ function App() {
                 className="Calendar__input" 
                 name="Calendar__input"/>
             <button onClick={handleGetCalendarData}>Get Data</button>
-            <button onClick={handlePrintCalendar}>Print Calendar</button>
-
-      
+            {data.length ? <PrintButton/> : null}
+          
       { data.length ? <WrappedCalendar /> : null}
       
     </div>
