@@ -63,11 +63,16 @@ function App() {
     )
   }
 
+
+  const ErrorMessage = () => {
+    return <p className="error-message">You must enter a date:</p>
+  }
+
   
   return (
     <div className="App">
       <label htmlFor="Calendar__input"></label>
-            {inputError ? "You muse enter a date." : null}
+            {inputError ? <ErrorMessage/> : null}
             <input required
                 onChange={e => handleChange(e.target.value)}
                 type="date" 
