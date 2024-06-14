@@ -34,6 +34,7 @@ function App() {
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({date: chosenDate})
     });
+
     
     const data = await response.json();
     const dates = data.data;
