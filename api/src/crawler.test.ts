@@ -52,7 +52,7 @@ test ('Strings should be the appropriate length', () => {
 /* populateCalendarWeek()
 ____________________________________________________________*/
 test('Function should return array with nested object structure.', async () => {
-    const returnedArray = await t.populateCalendarWeek();
+    const returnedArray = await t.populateCalendarWeek('2024-06-17');
 
     returnedArray.forEach((item) => {
         expect(item).toHaveProperty("date", expect.any(Number));

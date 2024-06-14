@@ -27,7 +27,7 @@ app.use(cors(withOptions));
 
 
 app.get("/", (req: Request, res: Response) => {
-    res.send(`The typescript server is running on port ${port}.`);
+    res.send(`The typescript server is running on port ${port}. Try http://localhost:${port}/calendar`);
 })
 
 app.post('/calendar', async (req: Request, res: Response) => {
