@@ -60,3 +60,11 @@ test('Function should return array with nested object structure.', async () => {
         expect(item).toHaveProperty("events", expect.any(Array));
     })
 })
+
+test('Function should thow an error if no date is supplied', async () => {
+    try {
+        await t.populateCalendarWeek(undefined);
+    } catch( error: any ) {
+        expect(error.message).toMatch("User did not provide a date. Check that dates are being validated on the user end.")
+    }
+})

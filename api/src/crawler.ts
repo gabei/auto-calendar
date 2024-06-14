@@ -17,7 +17,7 @@ function formatDateYYYYMMDD(date: Date): string {
 
 function createTargetIdName(dateString: string){
     if(!dateString){
-        throw new Error("Empty string passed where string expected")
+        throw new Error("Empty string passed where string expected");
     }
     if(dateString.length < 10){
         throw new Error("String length must equal that of the format YYYY-MM-DD (10)");
@@ -28,7 +28,11 @@ function createTargetIdName(dateString: string){
 }
 
 
-export default async function populateCalendarWeek (userDate: string){
+export default async function populateCalendarWeek (userDate: string | undefined){
+    if(!userDate || userDate == undefined) {
+        throw new Error("User did not provide a date. Check that dates are being validated on the user end.");
+    }
+
     const response = await axios.get(TARGETURL);
     const $ = cheerio.load(response.data);
 
