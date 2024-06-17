@@ -1,4 +1,4 @@
-
+import { useRef } from 'react';
 import Draggable from 'react-draggable';
 import './Event.scss';
 
@@ -12,13 +12,10 @@ function handleDrag() {
 }
 
 
+
 const Event = (props: eventProps) => {
     return (
-        <Draggable 
-            axis='y' 
-            handle={".Event__reposition"} 
-            key={props.title}
-            grid=[0,20]>
+        <Draggable  axis='y' handle={".Event__reposition"} key={props.title}>
             <div className="Event">
                 <h3>{props.title}</h3>
                 <p>{props.time}</p>
