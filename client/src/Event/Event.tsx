@@ -7,11 +7,6 @@ type eventProps = {
     time: string,
 }
 
-function handleDrag() {
-    console.log(this.getPropertyValue("translate"));
-}
-
-
 
 const Event = (props: eventProps) => {
     return (
