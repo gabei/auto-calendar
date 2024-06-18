@@ -33,7 +33,6 @@ export const Calendar = React.forwardRef((props, ref) => {
     const CalendarContent = () => {
         return (
                 <div className="Calendar__content">
-                    <h1 className="Calendar__title">Meeting Room Schedule</h1>
                     {dateList}
                     <CalendarNotice />
                 </div>
@@ -43,6 +42,7 @@ export const Calendar = React.forwardRef((props, ref) => {
     
     return (
             <div className='Calendar' ref={ref}>
+                <h1 className="Calendar__title">Meeting Room Schedule</h1>
                 {/*load the calendar only if the dateList is populated} */}
                 {dateList && <CalendarContent />}
             </div>

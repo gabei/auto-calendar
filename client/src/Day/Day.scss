@@ -1,6 +1,5 @@
 @media screen, print {
     .Day {
-        height: 6in;
         border: 1px solid black;
         border-left: none;
 
@@ -9,7 +8,8 @@
         }
 
         &__day-of-week {
-            height: 0.35in;
+            font-size: 12px;
+            height: 0.25in;
             margin: 0;
             padding: 5px;
             background-color: #5b9bd5;
@@ -28,7 +28,7 @@
         }
 
         &__events-container {
-            height: 4.5in;
+            height: 5in;
             position: relative;
             padding: 0px 4px;
             border-top: 1px solid black;

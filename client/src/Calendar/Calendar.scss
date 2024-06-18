@@ -16,16 +16,12 @@
         margin: 0 auto;
         padding: 0;
         display: flex;
+        flex-direction:column;
         justify-content: center;
         align-items: center;
     
         &__title {
-            // Remove title from flex flow so calendar is centered.
-            position: absolute;
-            left: 50%;
-            top: 0.00in;
-            transform: translateX(-50%);
-            font-size: 31px;
+            font-size: 29px;
             text-align: center;
             grid-column: 1 / 7;
         }
