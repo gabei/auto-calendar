@@ -1,33 +1,37 @@
-.Day {
-    height: 6in;
-    border: 1px solid black;
-    border-left: none;
-
-    &:first-of-type {
+@media screen, print {
+    .Day {
+        height: 6in;
         border: 1px solid black;
-    }
+        border-left: none;
 
-    &__day-of-week {
-        margin: 0;
-        padding: 5px;
-        background-color: #5b9bd5;
-        color: white;
-        text-align: center;
-        border-bottom: 1px solid black;
-    }
+        &:first-of-type {
+            border: 1px solid black;
+        }
 
-    &__week-date {
-        margin: 0;
-        padding: 3px 10px;
-        text-align: left;
-        font-weight: 400;
-        font-size: 15px;
-    }
+        &__day-of-week {
+            height: 0.35in;
+            margin: 0;
+            padding: 5px;
+            background-color: #5b9bd5;
+            color: white;
+            text-align: center;
+            border-bottom: 1px solid black;
+        }
 
-    &__events-container {
-        height: 4.5in;
-        position: relative;
-        padding: 0px 4px;
-        border-top: 1px solid black;
+        &__week-date {
+            height: 0.25in;
+            margin: 0;
+            padding: 3px 10px;
+            text-align: left;
+            font-weight: 400;
+            font-size: 15px;
+        }
+
+        &__events-container {
+            height: 4.5in;
+            position: relative;
+            padding: 0px 4px;
+            border-top: 1px solid black;
+        }
     }
 }
