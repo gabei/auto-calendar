@@ -27,7 +27,6 @@ function App() {
   }
 
 
-
   const makeCalendarAPIrequest = async () => {
     const response = await fetch("http://localhost:3000/calendar", {
       method: "POST",
@@ -46,7 +45,6 @@ function App() {
   const handlePrintCalendar = useReactToPrint({
     content: ():null => printRef.current,
   });
-
 
 
   const WrappedCalendar = () => {
